@@ -1,9 +1,10 @@
 // clicker game
 
-let cookie = 0; // Cookies are the score game
+// Initialisation des variables
+let cookie = 0; // Les cookies sont à la fois le score et la monnaie du jeu
 let millionCookie = 0;
 let cookiePerSec = 0.1;
-let arrOfProducteur = []
+let arrOfProducteur = [];
 
 class Producteur {
     constructor(name, baseProduction){
@@ -15,4 +16,4 @@ class Producteur {
     }
 }
 
-new Producteur("grand-mère", 10)
+new Producteur("grand-mère", 10) // exemple
