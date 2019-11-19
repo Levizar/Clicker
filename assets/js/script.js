@@ -107,3 +107,6 @@ const arrProducerModel = [
 
 // Cette ligne instancie chaque type de producer se trouvant dans l'arrProduceModel
 arrProducerModel.forEach(model => new Producer(model[0], model[1], model[2]))
+
+// SetInterval augmentant le nombre de cookie constament
+// setInterval(cookieGetter, timeInterval);
