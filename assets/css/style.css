@@ -38,6 +38,7 @@ h1 {
   background: blue;
   border-width: 7px;
   border: double;
+  background-image: url(../img/wood.jpg);
 }
 
 .three {
@@ -91,7 +92,7 @@ img {
 }
 
 .rotating {
-  -webkit-animation: rotating 20s linear infinite;
-  animation: rotating 20s linear infinite;
+  -webkit-animation: rotating 60s linear infinite;
+  animation: rotating 60s linear infinite;
 }
 /*# sourceMappingURL=style.css.map */
