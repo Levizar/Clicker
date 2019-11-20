@@ -1,38 +1,118 @@
+//***************** FONT ***************//
+@font-face {
+  font-family: myFirstFont;
+  src: url(../font/PAC-FONT.TTF);
+}
 
 *{
-    color: red;
+  font-family: myFirstFont;
 }
+// title //
+
+h1{
+    text-align: center;
+    font-size: 48px;
+}
+
 #container{
     display: grid;
     grid-template-columns: repeat(2, 3fr);
     grid-gap: 10px;
     grid-auto-rows: minmax(100px, auto);
-    min-width: 200px;
-    min-height: 300px;
+    
     background: teal;
 }
 
 .one{
     grid-column: 1 / 3;
-    grid-row: 1;
-    background: red;
+    grid-row: 1 /4;
+    background-image: url(../img/background.jpg);
+    background-position: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
   }
 
 
 
   .two { 
-    grid-column: 2 / 4;
-    grid-row: 1 / 3;
+    grid-column: 3/12;
+    grid-row: 1 / 5;
     background: blue;
+    border-width: 7px;
+    border:double;
+    background-image: url(../img/wood.jpg);
   }
 
 
   .three {
-    grid-column: 3;
+    grid-column: 1/3;
     grid-row: 4;
+    background: yellow;
+    border-width: 3px;
+    border: double;
   }
 
 section{
     margin: auto;
     width: 100%;
+    height: 100vh;
 }
+
+
+
+// SVG ////////////////////////
+.content{
+    
+    margin: auto;
+    width: 20%;
+   
+    
+}
+
+
+
+
+// IMAGE COOKIES CLICKER //////
+img{
+  max-width: 100%;
+  height: auto;
+  min-width: 70%;
+   
+    
+}
+
+@-webkit-keyframes rotating /* Safari and Chrome */ {
+    from {
+      -webkit-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    to {
+      -webkit-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  @keyframes rotating {
+    from {
+      -ms-transform: rotate(0deg);
+      -moz-transform: rotate(0deg);
+      -webkit-transform: rotate(0deg);
+      -o-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    to {
+      -ms-transform: rotate(360deg);
+      -moz-transform: rotate(360deg);
+      -webkit-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
+    }
+  }
+  .rotating {
+    -webkit-animation: rotating 60s linear infinite;
+    -moz-animation: rotating 60s linear infinite;
+    -ms-animation: rotating 60s linear infinite;
+    -o-animation: rotating 60s linear infinite;
+    animation: rotating 60s linear infinite;
+  }
