@@ -94,7 +94,7 @@ let cookie = 0;         // Les cookies sont à la fois le score et la monnaie du
 // à la manière d'un abaque
 let millionCookie = 0;
 // C'est le nombre de cookie gagné par interval de temps
-let cookiePerSec = 0.1;
+let cookiePerSec = 0;
 // L'interval de temps choisi en millisecondes
 const timeInterval = 500;
 // Array qui contiendra la totalité des objets instanciés
@@ -168,3 +168,15 @@ setInterval(()=>{
     console.log("saved");
 }
     , 30000);
+
+const load = ()=>{
+    if(localStorage.getItem("cookie")!=null&&localStorage.getItem("Producer")!=null){
+        cookie=localStorage.getItem("cookie");
+        arrTypeOfProducer=JSON.parse(localStorage.getItem("Producer"));
+    }else{
+        console.log("pas de données");
+    }
+}
+
+
+// window.addEventListener("load", load );
