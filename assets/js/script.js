@@ -163,7 +163,21 @@ const save = ()=>{
 }
 
 // Lance une sauvegarde dans le local storage toute les 30 secondes
+//to fix
 setInterval(()=>{
     save();
     console.log("saved");
-}, 30000);
+}
+    , 30000);
+
+const load = ()=>{
+    if(localStorage.getItem("cookie")!=null&&localStorage.getItem("Producer")!=null){
+        cookie=localStorage.getItem("cookie");
+        arrTypeOfProducer=JSON.parse(localStorage.getItem("Producer"));
+    }else{
+        console.log("pas de données");
+    }
+}
+
+
+// window.addEventListener("load", load );
