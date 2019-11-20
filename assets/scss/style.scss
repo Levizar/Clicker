@@ -11,7 +11,7 @@
 
 h1{
     text-align: center;
-    font-size: 48px;
+    font-size: 24px;
 }
 
 #container{
@@ -73,14 +73,13 @@ section{
 
 
 // IMAGE COOKIES CLICKER //////
-img{
+#clicker{
   max-width: 100%;
   height: auto;
-  min-width: 70%;
-   
-    
+  min-width: 70%; 
+  z-index: 999; 
 }
-
+// Animation css for cookies clickers rotation
 @-webkit-keyframes rotating /* Safari and Chrome */ {
     from {
       -webkit-transform: rotate(0deg);
@@ -115,4 +114,10 @@ img{
     -ms-animation: rotating 60s linear infinite;
     -o-animation: rotating 60s linear infinite;
     animation: rotating 60s linear infinite;
+  }
+  #petitBiscuit{
+    //visibility: hidden;
+    width: 20rem;
+    height: auto;
+    z-index: 1;
   }
