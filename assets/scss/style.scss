@@ -19,7 +19,7 @@ h1{
     grid-template-columns: repeat(2, 3fr);
     grid-gap: 10px;
     grid-auto-rows: minmax(100px, auto);
-    
+
     background: teal;
 }
 
@@ -115,6 +115,8 @@ section{
     -o-animation: rotating 60s linear infinite;
     animation: rotating 60s linear infinite;
   }
+
+  // CLICKER PETIT BISCUIT //
   #petitBiscuit{
     //visibility: hidden;
     width: 20rem;
