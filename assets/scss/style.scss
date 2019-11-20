@@ -79,6 +79,10 @@ section{
   min-width: 70%; 
   z-index: 999; 
 }
+
+#clicker:active{
+      background: red;
+}
 // Animation css for cookies clickers rotation
 @-webkit-keyframes rotating /* Safari and Chrome */ {
     from {
@@ -115,6 +119,8 @@ section{
     -o-animation: rotating 60s linear infinite;
     animation: rotating 60s linear infinite;
   }
+  //Cookies on click //
+
 
   // CLICKER PETIT BISCUIT //
   #petitBiscuit{
@@ -123,3 +129,5 @@ section{
     height: auto;
     z-index: 1;
   }
+
+  

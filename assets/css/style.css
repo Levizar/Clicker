@@ -77,6 +77,10 @@ section {
   z-index: 999;
 }
 
+#clicker:active {
+  background: red;
+}
+
 @-webkit-keyframes rotating /* Safari and Chrome */ {
   from {
     -webkit-transform: rotate(0deg);
