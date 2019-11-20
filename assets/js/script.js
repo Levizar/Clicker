@@ -54,7 +54,7 @@ class Producer {
 
                 // Appel la méthode recalculant la propriété totalProductionPerSec de ce producer
                 // La fonction de recalcul amène appel directement la fonction global getCookiePerSec()
-                this.recalculationProdPerSec ////////!!!!\\\\\\\  Je ne sais plus s'il faut les () ou pas.
+                this.recalculationProdPerSec() ////////!!!!\\\\\\\  Je ne sais plus s'il faut les () ou pas. n.b  : il les faut
             } else {
                 console.log("not enough cookie");
             }
@@ -107,7 +107,8 @@ const arrProducerModel = [
     ["ouvrier délocalisé", 0.5, 3],
     ["Patissier", 5, 10],
     ["Patisserie", 10, 20],
-    ["Fabrique", 15, 25]
+    ["Fabrique", 15, 25],
+    ["Arnaud", 100, 350]
 ];
 
 // Cette ligne instancie chaque type de producer se trouvant dans l'arrProduceModel
@@ -149,6 +150,21 @@ console.log(cookie);
 document.getElementById("clicker").addEventListener("click", clicker );
 
 const updateCookie = ()=> {
-    let cookieNbr = document.getElementById("cookiesNumber");
-    cookieNbr.innerText=cookie;
+    let cookieNbrFun = document.getElementById("cookiesNumberFun");
+    let cookieNbr=document.getElementById("cookiesNumber");
+    cookieNbrFun.innerText=cookie;
+    cookieNbr.innerText=cookie.toFixed(2);
 }
+
+
+const save = ()=>{
+    localStorage.setItem("Producer",  JSON.stringify(arrTypeOfProducer));
+    localStorage.setItem("cookie", cookie);
+}
+
+// Lance une sauvegarde dans le local storage toute les 30 secondes
+setInterval(()=>{
+    save();
+    console.log("saved");
+}
+    , 30000);
