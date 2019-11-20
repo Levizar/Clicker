@@ -42,7 +42,7 @@ class Producer {
             // Au lieu de faire ça, il serait aussi possible de prévoir de désactiver le
             // bouton d'achat, voir de faire les 2 pour être sûr. (et de le griser au passage)
             if (cookie >= this.price) {
-
+                console.log("jusqu'ici tout va bien buy");
                 // Paiement du prix en cookie
                 cookie -= this.price;
 
@@ -55,12 +55,14 @@ class Producer {
                 // Appel la méthode recalculant la propriété totalProductionPerSec de ce producer
                 // La fonction de recalcul amène appel directement la fonction global getCookiePerSec()
                 this.recalculationProdPerSec ////////!!!!\\\\\\\  Je ne sais plus s'il faut les () ou pas.
+            } else {
+                console.log("not enough cookie");
             }
         }
         // Une fois le type de producteur instancié, stock l'instance dans une array
         // Afin de pouvoir itérer facilement sur chaque objet pour calculer
         // le nombre de cookie à la seconde total
-        arrTypeOfProducer.push(this);
+
     }
 }
 
@@ -102,23 +104,38 @@ const arrTypeOfProducer = [];
 // Il s'agira d'itérer dessus pour construire les objets automatiquement à partir de ces 3 valeurs
 const arrProducerModel = [
     ["click", 0.1, 2],
-    ["grand-mother", 5, 10]
+    ["ouvrier délocalisé", 0.5, 3],
+    ["Patissier", 5, 10],
+    ["Patisserie", 10, 20],
+    ["Fabrique", 15, 25]
 ];
 
 // Cette ligne instancie chaque type de producer se trouvant dans l'arrProduceModel
-arrProducerModel.forEach(model =>{
-    new Producer(model[0], model[1], model[2]);
-    let templateBtn = document.getElementById("templatebtn").cloneNode(true);
+arrProducerModel.forEach((model, index) =>{
+    let newProducer = new Producer(model[0], model[1], model[2]);
+    arrTypeOfProducer.push(newProducer);
+
+    let templateBtn = document.getElementById("template").cloneNode(true);
     let cloneBtn=document.importNode(templateBtn.content, true);
-    let target=document.getElementById("?");
+    let button = cloneBtn.querySelector("button")
+    button.innerText=model[0];
+    let target=document.getElementById("target");
     target.appendChild(cloneBtn); // sera dans une ul li
-
-
+    button.id = model[0]
+    button.addEventListener("click", () => {
+        console.log("si le listenner marche");
+        arrTypeOfProducer[index].buy()
+    })
 
 });
 
 // SetInterval augmentant le nombre de cookie constament
-// setInterval(cookieGetter, timeInterval);
+setInterval(()=>{
+    cookieGetter();
+    updateCookie();
+}
+
+    , timeInterval);
 let click = arrTypeOfProducer[0]; // Recupere l'objet Click dans une variable pour l'utiliser de façon plus simple
 
 
@@ -129,7 +146,9 @@ console.log(cookie);
 }
 
 // Lance la fonction de base en clickant sur le cookie
-document.getElementById("cookieClick").addEventListener("click", clicker );
+document.getElementById("clicker").addEventListener("click", clicker );
 
-
-document.getElementById("cursor").addEventListener("click", click.buy );
+const updateCookie = ()=> {
+    let cookieNbr = document.getElementById("cookiesNumber");
+    cookieNbr.innerText=cookie;
+}
