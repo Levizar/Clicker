@@ -3,7 +3,7 @@
 // Création d'une classe et d'un constructor afin de créer autant de producer que l'on veut via une boucle
 class Producer {
     // Permet d'initialiser un proucer avec un nom, une production de base et un prix de base
-    constructor(name, baseProduction, baseprice) {
+    constructor(name, baseProduction, basePrice) {
         // Nom de ce type de producteur
         this.name = name;
 
@@ -20,13 +20,13 @@ class Producer {
         this.totalProductionPerSec = 0;
 
         // Le prix de base de ce producer
-        this.baseprice = baseprice;
+        this.basePrice = basePrice;
 
         // Le prix actuel de ce producer
         this.price = basePrice;
 
         // Methode recalculant la valeur de totalProductionPerSec
-        // Elle est séparé de buy car un bonus acheté ou débloqué pourrait entrainer un recalcul 
+        // Elle est séparé de buy car un bonus acheté ou débloqué pourrait entrainer un recalcul
         this.recalculationProdPerSec = () => {
             this.totalProductionPerSec = this.baseProduction * this.multiplicateur * this.nbr;
 
@@ -39,7 +39,7 @@ class Producer {
         this.buy = () => {
 
             // ne lance le contenu de la methode que s'il y a de quoi payer
-            // Au lieu de faire ça, il serait aussi possible de prévoir de désactiver le 
+            // Au lieu de faire ça, il serait aussi possible de prévoir de désactiver le
             // bouton d'achat, voir de faire les 2 pour être sûr. (et de le griser au passage)
             if (cookie >= this.price) {
 
@@ -90,7 +90,7 @@ let cookie = 0;         // Les cookies sont à la fois le score et la monnaie du
 // Il faudra soit traiter les nombres via un bigInt (plus propre)
 // Ou alors décomposer le nombre en le stockant dans plusieurs variables
 // à la manière d'un abaque
-let millionCookie = 0;  
+let millionCookie = 0;
 // C'est le nombre de cookie gagné par interval de temps
 let cookiePerSec = 0.1;
 // L'interval de temps choisi en millisecondes
@@ -106,7 +106,30 @@ const arrProducerModel = [
 ];
 
 // Cette ligne instancie chaque type de producer se trouvant dans l'arrProduceModel
-arrProducerModel.forEach(model => new Producer(model[0], model[1], model[2]))
+arrProducerModel.forEach(model =>{
+    new Producer(model[0], model[1], model[2]);
+    let templateBtn = document.getElementById("templatebtn").cloneNode(true);
+    let cloneBtn=document.importNode(templateBtn.content, true);
+    let target=document.getElementById("?");
+    target.appendChild(cloneBtn); // sera dans une ul li
+
+
+
+});
 
 // SetInterval augmentant le nombre de cookie constament
 // setInterval(cookieGetter, timeInterval);
+let click = arrTypeOfProducer[0]; // Recupere l'objet Click dans une variable pour l'utiliser de façon plus simple
+
+
+// Fonction de base pour incrémenter le click
+const clicker = () =>{
+cookie += (click.baseProduction*click.multiplicateur);
+console.log(cookie);
+}
+
+// Lance la fonction de base en clickant sur le cookie
+document.getElementById("cookieClick").addEventListener("click", clicker );
+
+
+document.getElementById("cursor").addEventListener("click", click.buy );
