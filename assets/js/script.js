@@ -192,3 +192,30 @@ setInterval(()=>{
     console.log("saved");
 }
     , 10000); // remettre 30 secondes !!!!!!!!!!!!!
+   
+
+const load = ()=>{
+    if(localStorage.getItem("cookie")!=null&&localStorage.getItem("Producer")!=null){
+        cookie=localStorage.getItem("cookie");
+        arrTypeOfProducer=JSON.parse(localStorage.getItem("Producer"));
+    }else{
+        console.log("pas de données");
+    }
+}
+
+
+// window.addEventListener("load", load );
+
+
+
+
+// fonction lançant des petit biscuit supplémentaire: à faire lorsque "buy cursor est lancé"
+
+setTimeout(()=>{
+    let testii = document.createElement("img");
+    testii.id = "testii"
+    testii.src = "assets/img/petitBis.png"
+    testii.class = "testi"
+    let scaling = document.getElementById("scaling");
+    scaling.appendChild(testii);
+}, 1000)
