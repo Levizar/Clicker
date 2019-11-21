@@ -6,15 +6,17 @@
 
 *{
   font-family: myFirstFont;
+  list-style: none;
 }
 // title //
 
 h1{
     text-align: center;
-    font-size: 24px;
+    font-size: 48px;
 }
 
 #container{
+  min-width: 100vh;
     display: grid;
     grid-template-columns: repeat(2, 3fr);
     grid-gap: 10px;
@@ -26,8 +28,8 @@ h1{
 .one{
     grid-column: 1 / 3;
     grid-row: 1 /4;
-    background-image: url(../img/background.jpg);
-    background-position: cover;
+    background-image: url(../img/backgroundTwo.jpg);
+    background-size: cover;
     background-repeat: no-repeat;
     min-height: 100vh;
         #cookiesNumber{
@@ -50,7 +52,8 @@ h1{
   .three {
     grid-column: 1/3;
     grid-row: 4;
-    background: yellow;
+    background-image: url(../img/board.jpg);
+    background-size: cover;
     border-width: 3px;
     border: double;
   }
@@ -63,7 +66,7 @@ section{
 
 
 
-// SVG ////////////////////////
+// CENTRAL COOKIES ELEMENT ////////////////////////
 .content{
 
     margin: auto;
@@ -83,11 +86,14 @@ section{
   z-index: 999;
 }
 
-#clicker:active{
-      background: red;
+
+#clicker:hover { 
+  transform: scale(1.1); 
 }
 
 #testii{
+  z-index: 2;
+  
   width: 2rem;
 }
 // Animation css for cookies clickers rotation
@@ -126,6 +132,20 @@ section{
     -o-animation: rotating 60s linear infinite;
     animation: rotating 60s linear infinite;
   }
+
+
+
+
+  #clicker:hover {
+    -webkit-transform: scale(1.25);
+    transform: scale(1.25);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+  }
+  #clicker:hover {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
   //Cookies on click //
 
 
@@ -136,3 +156,183 @@ section{
     height: auto;
     z-index: 1;
   }
+// test vole d'oiseau //
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+.container {
+    z-index: 1;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // min-height: 100vh;
+    min-height: 35rem;
+    background-image: linear-gradient(to bottom,  rgba(255,168,76,0.6) 0%,rgba(255,123,13,0.6) 100%);
+    
+    background-size: cover;
+    background-position: center center;
+    padding: 2rem;
+}
+
+.bird {
+    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/174479/bird-cells-new.svg);
+    background-size: auto 100%;
+    width: 88px;
+    height: 125px;
+    will-change: background-position;
+    
+    animation-name: fly-cycle;
+    animation-timing-function: steps(10);
+    animation-iteration-count: infinite;
+
+    &--one {
+        animation-duration: 1s;
+        animation-delay: -0.5s;     
+    }
+    
+    &--two {
+        animation-duration: 0.9s;
+        animation-delay: -0.75s;
+    }
+    
+    &--three {
+        animation-duration: 1.25s;
+        animation-delay: -0.25s;
+    }
+    
+    &--four {
+        animation-duration: 1.1s;
+        animation-delay: -0.5s;
+    }
+
+}
+
+.bird-container {
+    position: absolute;
+    top: 20%;
+    left: -10%;
+    transform: scale(0) translateX(-10vw);
+    will-change: transform;
+    
+    animation-name: fly-right-one;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    
+    &--one {
+        animation-duration: 15s;
+        animation-delay: 10s;
+    }
+    
+    &--two {
+        animation-duration: 16s;
+        animation-delay: 20s;
+    }
+    
+    &--three {
+        animation-duration: 14.6s;
+        animation-delay: 15s;
+    }
+    
+    &--four {
+        animation-duration: 16s;
+        animation-delay: 10.25s;
+    }
+    
+}
+
+@keyframes fly-cycle {
+    
+    100% {
+        background-position: -900px 0;
+    }
+    
+}
+
+@keyframes fly-right-one {
+    
+    0% {
+        transform: scale(0.3) translateX(-10vw);
+    }
+    
+    10% {
+        transform: translateY(2vh) translateX(10vw) scale(0.4);
+    }
+    
+    20% {
+        transform: translateY(0vh) translateX(30vw) scale(0.5);
+    }
+    
+    30% {
+        transform: translateY(4vh) translateX(50vw) scale(0.6);
+    }
+    
+    40% {
+        transform: translateY(2vh) translateX(70vw) scale(0.6);
+    }
+    
+    50% {
+        transform: translateY(0vh) translateX(90vw) scale(0.6);
+    }
+    
+    60% {
+        transform: translateY(0vh) translateX(110vw) scale(0.6);
+    }
+    
+    100% {
+        transform: translateY(0vh) translateX(110vw) scale(0.6);
+    }
+    
+}
+
+@keyframes fly-right-two {
+    
+    0% {
+        transform: translateY(-2vh) translateX(-10vw) scale(0.5);
+    }
+    
+    10% {
+        transform: translateY(0vh) translateX(10vw) scale(0.4);
+    }
+    
+    20% {
+        transform: translateY(-4vh) translateX(30vw) scale(0.6);
+    }
+    
+    30% {
+        transform: translateY(1vh) translateX(50vw) scale(0.45);
+    }
+    
+    40% {
+        transform: translateY(-2.5vh) translateX(70vw) scale(0.5);
+    }
+    
+    50% {
+        transform: translateY(0vh) translateX(90vw) scale(0.45);
+    }
+    
+    51% {
+        transform: translateY(0vh) translateX(110vw) scale(0.45);
+    }
+    
+    100% {
+        transform: translateY(0vh) translateX(110vw) scale(0.45);
+    }
+    
+}
+
+
+
+
+//************ CANVAS **********************//
+canvas{
+  display: flex;
+  background: rgb(50, 50, 63);
+  margin: auto;
+  max-height: 20rem;
+}
