@@ -37,12 +37,11 @@ class Producer {
         // Methode permettant d'acheter un producer et d'augmenter son prix
         // Et d'appeler la fonction recalculant la variable cookie seconde
         this.buy = () => {
-
+            console.log("click sur buy");
             // ne lance le contenu de la methode que s'il y a de quoi payer
             // Au lieu de faire ça, il serait aussi possible de prévoir de désactiver le
             // bouton d'achat, voir de faire les 2 pour être sûr. (et de le griser au passage)
             if (cookie >= this.price) {
-                console.log("jusqu'ici tout va bien buy");
                 // Paiement du prix en cookie
                 cookie -= this.price;
 
@@ -71,8 +70,8 @@ const getCookiePerSec = () => {
     // remise à zéro
     cookiePerSec = 0;
     // Somme de toutes les productions par seconde
-    arrTypeOfProducer.forEach(producer => {
-        cookiePerSec += producer.totalProductionPerSec
+    arrTypeOfProducer.forEach(prod => {
+        cookiePerSec += prod.totalProductionPerSec
     })
 }
 
@@ -98,7 +97,7 @@ let cookiePerSec = 0;
 // L'interval de temps choisi en millisecondes
 const timeInterval = 500;
 // Array qui contiendra la totalité des objets instanciés
-const arrTypeOfProducer = [];
+let arrTypeOfProducer = [];
 
 // cette array doit être remplie manuellement par les types de producer que l'on veut.
 // Il s'agira d'itérer dessus pour construire les objets automatiquement à partir de ces 3 valeurs
@@ -124,11 +123,31 @@ arrProducerModel.forEach((model, index) =>{
     target.appendChild(cloneBtn); // sera dans une ul li
     button.id = model[0]
     button.addEventListener("click", () => {
-        console.log("si le listenner marche");
         arrTypeOfProducer[index].buy()
     })
 
 });
+
+const load = ()=>{
+    if(localStorage.getItem("saveGame")!=null){
+        saveGame = JSON.parse(localStorage.getItem("saveGame"))
+        cookie= saveGame.cookie;
+        recupArrProd =saveGame.producer;
+        recupArrProd.forEach((objProducer, index) => {
+            let recupObject=Object.entries(objProducer);
+            recupObject.forEach(([key, value]) =>{
+                //console.log([key, value]);
+                arrTypeOfProducer[index][key] = value;
+            });
+        })
+        getCookiePerSec();
+    }else{
+        console.log("pas de données");
+    }
+}
+//console.log(arrTypeOfProducer);
+
+window.addEventListener("load", load );
 
 // SetInterval augmentant le nombre de cookie constament
 setInterval(()=>{
@@ -137,13 +156,14 @@ setInterval(()=>{
 }
 
     , timeInterval);
-let click = arrTypeOfProducer[0]; // Recupere l'objet Click dans une variable pour l'utiliser de façon plus simple
+
 
 
 // Fonction de base pour incrémenter le click
 const clicker = () =>{
-cookie += (click.baseProduction*click.multiplicateur);
-console.log(cookie);
+    let click = arrTypeOfProducer[0]; // Recupere l'objet Click dans une variable pour l'utiliser de façon plus simple
+    cookie += (click.baseProduction*click.multiplicateur);
+    console.log(cookie);
 }
 
 // Lance la fonction de base en clickant sur le cookie
@@ -153,13 +173,16 @@ const updateCookie = ()=> {
     let cookieNbrFun = document.getElementById("cookiesNumberFun");
     let cookieNbr=document.getElementById("cookiesNumber");
     cookieNbrFun.innerText=cookie;
-    cookieNbr.innerText=cookie.toFixed(2);
+    cookieNbr.innerText = cookie.toFixed(2);
 }
 
 
 const save = ()=>{
-    localStorage.setItem("Producer",  JSON.stringify(arrTypeOfProducer));
-    localStorage.setItem("cookie", cookie);
+    const saveGame = {
+        producer : arrTypeOfProducer,
+        cookie : cookie
+    };
+    localStorage.setItem("saveGame",  JSON.stringify(saveGame));
 }
 
 // Lance une sauvegarde dans le local storage toute les 30 secondes
@@ -167,16 +190,4 @@ setInterval(()=>{
     save();
     console.log("saved");
 }
-    , 30000);
-
-const load = ()=>{
-    if(localStorage.getItem("cookie")!=null&&localStorage.getItem("Producer")!=null){
-        cookie=localStorage.getItem("cookie");
-        arrTypeOfProducer=JSON.parse(localStorage.getItem("Producer"));
-    }else{
-        console.log("pas de données");
-    }
-}
-
-
-// window.addEventListener("load", load );
+    , 10000); // remettre 30 secondes !!!!!!!!!!!!!
