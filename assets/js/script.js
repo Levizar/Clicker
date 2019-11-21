@@ -13,18 +13,21 @@
 let cookie = 0; // Les cookies sont à la fois le score et la monnaie du jeu
 // C'est le nombre de cookie gagné par interval de temps
 let cookiePerSec = 0;
-// L'interval de temps choisi en millisecondes
-const timeInterval = 500;
+// L'interval de temps pour la génération de cookie en millisecondes
+const timeIntervalCookieGeneration = 500;
+// Interval de temps avant la prochaine sauvegarde en millisecondes
+const timeIntervalSaveGame = 30000;
 
-// cette array doit être remplie manuellement par les types de producer que l'on veut.
+// cette array doit être remplie manuellement par type de producer.
 // Il s'agira d'itérer dessus pour construire les objets automatiquement à partir de ces 3 valeurs
+// [name, baseProduction, basePrice, multBasePrice, imgPath]
 const arrProducerModel = [
-    ["click", 0.1, 2],
-    ["ouvrier délocalisé", 0.5, 3],
-    ["Patissier", 5, 10],
-    ["Patisserie", 10, 20],
-    ["Fabrique", 15, 25],
-    ["Arnaud", 100, 350]
+    ["click", 1, 2, 10, null],
+    ["ouvrier délocalisé", 2, 3, 10, null],
+    ["Patissier", 4, 10, 10, null],
+    ["Patisserie", 8, 20, 10, null],
+    ["Fabrique", 16, 25, 10, null],
+    ["Arnaud", 100, 350, 10, null]
 ];
 
 
@@ -43,7 +46,7 @@ let arrTypeOfProducer = [];
 // Création d'une classe et d'un constructor afin de créer autant de producer que l'on veut via une boucle
 class Producer {
     // Permet d'initialiser un proucer avec un nom, une production de base et un prix de base
-    constructor(name, baseProduction, basePrice) {
+    constructor(name, baseProduction, basePrice, multBasePrice) {
         // Nom de ce type de producteur
         this.name = name;
         // Cookie par seconde de base que produit le producer
@@ -58,8 +61,14 @@ class Producer {
         this.basePrice = basePrice;
         // Le prix actuel de ce producer
         this.price = basePrice;
+        // Le prix de base de ce multiplicateur
+        this.multBasePrice = multBasePrice;
+        // Le prix actuel du multiplicateur
+        this.multPrice = multBasePrice;
+        // Le nombre de multiplicateur précédement acheté
+        this.nbrMult
         // Methode recalculant la valeur de totalProductionPerSec
-        // Elle est séparé de buy car un bonus acheté ou débloqué pourrait entrainer un recalcul
+        // Elle est séparé de buyProd car un bonus acheté ou débloqué pourrait entrainer un recalcul
         this.recalculationProdPerSec = () => {
             this.totalProductionPerSec = this.baseProduction * this.multiplicateur * this.nbr;
             // lance la fonction recalculant la variable globale cookiePerSec
@@ -67,8 +76,8 @@ class Producer {
         }
         // Methode permettant d'acheter un producer et d'augmenter son prix
         // Et d'appeler la fonction recalculant la variable cookie seconde
-        this.buy = () => {
-            console.log("click sur buy");
+        this.buyProd = () => {
+            console.log("click sur buyProd");
             // ne lance le contenu de la methode que s'il y a de quoi payer
             // Au lieu de faire ça, il serait aussi possible de prévoir de désactiver le
             // bouton d'achat, voir de faire les 2 pour être sûr. (et de le griser au passage)
@@ -78,7 +87,7 @@ class Producer {
                 // Achat donc augmentation du nbr de producer de ce type
                 this.nbr += 1;
                 // Augmentation du prix du prochain producer
-                this.price = this.basePrice * Math.pow(2, this.nbr); // Il faut remplacer 1 par le logarithme neperien
+                this.price = this.basePrice * Math.pow(1.15, this.nbr); // Il faut remplacer 1 par le logarithme neperien
                 // Appel la méthode recalculant la propriété totalProductionPerSec de ce producer
                 // La fonction de recalcul amène appel directement la fonction global getCookiePerSec()
                 this.recalculationProdPerSec() ////////!!!!\\\\\\\  Je ne sais plus s'il faut les () ou pas. n.b  : il les faut
@@ -86,22 +95,41 @@ class Producer {
                 console.log("not enough cookie");
             }
         }
-        // Une fois le type de producteur instancié, stock l'instance dans une array
-        // Afin de pouvoir itérer facilement sur chaque objet pour calculer
-        // le nombre de cookie à la seconde total
+        this.buyMult = () => {
+            console.log("click sur buyMult");
+            // ne lance le contenu de la methode que s'il y a de quoi payer
+            // Au lieu de faire ça, il serait aussi possible de prévoir de désactiver le
+            // bouton d'achat, voir de faire les 2 pour être sûr. (et de le griser au passage)
+            if (cookie >= this.multPrice) {
+                // Paiement du prix en cookie
+                cookie -= this.multPrice;
+                // Achat donc augmentation du nbr de producer de ce type
+                this.multiplicateur *= 1,5;
+                // Incrémentation du nombre d'achat de multiplicateur
+                this.nbrMult += 1;
+                // Augmentation du prix du prochain producer
+                this.multPrice = this.multBasePrice * Math.pow(1.5, this.nbrMult); // Il faut remplacer 1 par le logarithme neperien
+                // Appel la méthode recalculant la propriété totalProductionPerSec de ce producer
+                // La fonction de recalcul amène appel directement la fonction global getCookiePerSec()
+                this.recalculationProdPerSec()
+            } else {
+                console.log("not enough cookie");
+            }
+        }
     }
 }
 
 // Fonction globale permettant de calculer le nombre de cookie par seconde pour le setInterval
 const getCookiePerSec = () => {
-    // remise à zéro
+    // remise à zéro pour nouveau décompte
     cookiePerSec = 0;
-    // Somme de toutes les productions par seconde
+    // Somme de toutes les productions par seconde à l'instant qui succède l'achat d'un producer ou d'un multiplicateur
     arrTypeOfProducer.forEach(prod => {
         cookiePerSec += prod.totalProductionPerSec
     })
 }
 
+// Fonction affichant le nombre de cookie
 const updateCookie = () => {
     let cookieNbrFun = document.getElementById("cookiesNumberFun");
     let cookieNbr = document.getElementById("cookiesNumber");
@@ -163,7 +191,7 @@ const loadSaveGame = () => {
 // Cette boucle forEach instancie chaque type de producer se trouvant dans l'arrProduceModel
 // Et crée les boutons correspondants en les injectants directement dans le DOM
 arrProducerModel.forEach((model, index) => {
-    let newProducer = new Producer(model[0], model[1], model[2]);
+    let newProducer = new Producer(...model);
     arrTypeOfProducer.push(newProducer);
     let templateBtn = document.getElementById("template").cloneNode(true);
     let cloneBtn = document.importNode(templateBtn.content, true);
@@ -173,9 +201,10 @@ arrProducerModel.forEach((model, index) => {
     target.appendChild(cloneBtn);                       // sera dans une ul li
     button.id = model[0]
     button.addEventListener("click", () => {
-        arrTypeOfProducer[index].buy()
+        arrTypeOfProducer[index].buyProd()
     })
 });
+
 // Une fois le bloc ci-dessus executé, lancement de la fonction loadSaveGame
 window.addEventListener("load", loadSaveGame);
 
@@ -183,18 +212,16 @@ window.addEventListener("load", loadSaveGame);
 setInterval(() => {
         cookieGetter();
         updateCookie();
-    }, timeInterval);
+    }, timeIntervalCookieGeneration);
 
 // Lance la fonction de base en clickant sur le cookie
 document.getElementById("clicker").addEventListener("click", clicker);
 
-// Lance une sauvegarde dans le local storage toute les 30 secondes
-//to fix
+// Lance une sauvegarde dans le local storage
 setInterval(() => {
     save();
     console.log("saved");
-}, 30000);
-
+}, timeIntervalSaveGame);
 
 
 
@@ -203,7 +230,7 @@ setInterval(() => {
 //////////////////////////////////
 
 
-// fonction lançant UN petit biscuit supplémentaire: à faire lorsque "buy cursor est lancé"
+// fonction lançant UN petit biscuit supplémentaire: à faire lorsque "buyProd cursor est lancé"
 setTimeout(() => {
     let testii = document.createElement("img");
     testii.id = "testii"
