@@ -82,16 +82,51 @@ section {
   height: auto;
   min-width: 70%;
   z-index: 999;
+  -webkit-transition: all 200ms ease-in;
+  -webkit-transform: scale(1);
+  -ms-transition: all 200ms ease-in;
+  -ms-transform: scale(1);
+  -moz-transition: all 200ms ease-in;
+  -moz-transform: scale(1);
+  transition: all 200ms ease-in;
+  transform: scale(1);
 }
 
-#clicker:hover {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
+@-webkit-keyframes rot {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes rot {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
 }
 
 #testii {
-  z-index: 2;
-  width: 2rem;
+  margin-top: 2rem;
+  width: 190px;
+  height: 170px;
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  margin: -20px;
+  font-size: 100px;
+  -webkit-animation: rot 25s infinite linear;
+          animation: rot 25s infinite linear;
+  -webkit-transform-origin: 20px -90px;
+          transform-origin: 20px -90px;
 }
 
 @-webkit-keyframes rotating /* Safari and Chrome */ {
@@ -121,16 +156,26 @@ section {
   animation: rotating 60s linear infinite;
 }
 
-#clicker:hover {
-  -webkit-transform: scale(1.25);
-  transform: scale(1.25);
-  -webkit-transition: .3s ease-in-out;
-  transition: .3s ease-in-out;
+#scaling {
+  -webkit-transition: all 200ms ease-in;
+  -webkit-transform: scale(1);
+  -ms-transition: all 200ms ease-in;
+  -ms-transform: scale(1);
+  -moz-transition: all 200ms ease-in;
+  -moz-transform: scale(1);
+  transition: all 200ms ease-in;
+  transform: scale(1);
 }
 
-#clicker:hover {
-  -webkit-transform: scale(1);
-  transform: scale(1);
+#scaling:hover {
+  -webkit-transition: all 200ms ease-in;
+  -webkit-transform: scale(1.2);
+  -ms-transition: all 200ms ease-in;
+  -ms-transform: scale(1.2);
+  -moz-transition: all 200ms ease-in;
+  -moz-transform: scale(1.2);
+  transition: all 200ms ease-in;
+  transform: scale(1.2);
 }
 
 #petitBiscuit {
@@ -402,6 +447,10 @@ section {
     -webkit-transform: translateY(0vh) translateX(110vw) scale(0.45);
             transform: translateY(0vh) translateX(110vw) scale(0.45);
   }
+}
+
+.bird {
+  z-index: 3;
 }
 
 canvas {
