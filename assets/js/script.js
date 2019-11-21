@@ -191,17 +191,23 @@ const loadSaveGame = () => {
 // Cette boucle forEach instancie chaque type de producer se trouvant dans l'arrProduceModel
 // Et crée les boutons correspondants en les injectants directement dans le DOM
 arrProducerModel.forEach((model, index) => {
+    // arrProducerModel contient ceci : [name, baseProduction, basePrice, multBasePrice, imgPath]
     let newProducer = new Producer(...model);
     arrTypeOfProducer.push(newProducer);
     let templateBtn = document.getElementById("template").cloneNode(true);
     let cloneBtn = document.importNode(templateBtn.content, true);
-    let button = cloneBtn.querySelector("button")
-    button.innerText = model[0];
+    let buttonBuy = cloneBtn.querySelector("button.buy")
+    buttonBuy.innerText = model[0];
+    let buttonMult = cloneBtn.querySelector("button.mult")
+    buttonMult.innerText = `Mult: +50%`;                            // Codé en dur: à modifier
     let target = document.getElementById("target");
-    target.appendChild(cloneBtn);                       // sera dans une ul li
-    button.id = model[0]
-    button.addEventListener("click", () => {
-        arrTypeOfProducer[index].buyProd()
+    target.appendChild(cloneBtn);                       
+    buttonBuy.id = model[0]
+    buttonBuy.addEventListener("click", () => {
+        arrTypeOfProducer[index].buyProd();
+    })
+    buttonMult.addEventListener("click", () => {
+        arrTypeOfProducer[index].buyMult();
     })
 });
 
@@ -211,8 +217,12 @@ window.addEventListener("load", loadSaveGame);
 // SetInterval augmentant le nombre de cookie constament
 setInterval(() => {
         cookieGetter();
-        updateCookie();
     }, timeIntervalCookieGeneration);
+
+// SetInterval raffraichissant le nombre affiché
+setInterval(() => {
+        updateCookie();
+    }, 100);
 
 // Lance la fonction de base en clickant sur le cookie
 document.getElementById("clicker").addEventListener("click", clicker);
