@@ -134,7 +134,7 @@ const updateCookie = () => {
     let cookieNbrFun = document.getElementById("cookiesNumberFun");
     let cookieNbr = document.getElementById("cookiesNumber");
     cookieNbrFun.innerText = cookie;
-    cookieNbr.innerText = cookie.toFixed(2);
+    cookieNbr.innerText = cookie.toFixed(0);
 }
 
 // Fonction de base pour incrémenter le click
