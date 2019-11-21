@@ -30,11 +30,14 @@ h1{
     background-position: cover;
     background-repeat: no-repeat;
     min-height: 100vh;
+        #cookiesNumber{
+            font-family: sans-serif;
+        }
   }
 
 
 
-  .two { 
+  .two {
     grid-column: 3/12;
     grid-row: 1 / 5;
     background: blue;
@@ -62,11 +65,11 @@ section{
 
 // SVG ////////////////////////
 .content{
-    
+
     margin: auto;
     width: 20%;
-   
-    
+
+
 }
 
 
@@ -76,8 +79,8 @@ section{
 #clicker{
   max-width: 100%;
   height: auto;
-  min-width: 70%; 
-  z-index: 999; 
+  min-width: 70%;
+  z-index: 999;
 }
 
 #clicker:active{
@@ -133,5 +136,3 @@ section{
     height: auto;
     z-index: 1;
   }
-
-  
