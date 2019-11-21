@@ -80,6 +80,8 @@ section{
 
 // IMAGE COOKIES CLICKER //////
 #clicker{
+  display: flex;
+  justify-content: center;
   max-width: 100%;
   height: auto;
   min-width: 70%;
@@ -122,13 +124,13 @@ section{
   margin-top: 2rem;
 	width: 190px;
 	height: 170px;
-	position: absolute;
-	top: 200px;
-	left: 50%;
+	position: fixed;
+//top: 200px;
+	//left: 50%;
 	margin: -20px;
 	font-size: 100px;
   animation: rot 25s infinite linear;
-  transform-origin: 20px -90px;
+  transform-origin: 50% 50%;
 }
 
 // Animation css for cookies clickers rotation
@@ -176,7 +178,9 @@ section{
     -moz-transition: all 200ms ease-in;
     -moz-transform: scale(1);
     transition: all 200ms ease-in;
-    transform: scale(1);   
+    transform: scale(1); 
+    display: flex;
+    justify-content: center;  
   }
   
   #scaling:hover { 

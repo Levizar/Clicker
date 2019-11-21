@@ -181,3 +181,17 @@ const load = ()=>{
 
 
 // window.addEventListener("load", load );
+
+
+
+
+// fonction lançant des petit biscuit supplémentaire: à faire lorsque "buy cursor est lancé"
+
+setTimeout(()=>{
+    let testii = document.createElement("img");
+    testii.id = "testii"
+    testii.src = "assets/img/petitBis.png"
+    testii.class = "testi"
+    let scaling = document.getElementById("scaling");
+    scaling.appendChild(testii);
+}, 1000)

@@ -78,6 +78,12 @@ section {
 }
 
 #clicker {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   max-width: 100%;
   height: auto;
   min-width: 70%;
@@ -118,15 +124,13 @@ section {
   margin-top: 2rem;
   width: 190px;
   height: 170px;
-  position: absolute;
-  top: 200px;
-  left: 50%;
+  position: fixed;
   margin: -20px;
   font-size: 100px;
   -webkit-animation: rot 25s infinite linear;
           animation: rot 25s infinite linear;
-  -webkit-transform-origin: 20px -90px;
-          transform-origin: 20px -90px;
+  -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
 }
 
 @-webkit-keyframes rotating /* Safari and Chrome */ {
@@ -165,6 +169,12 @@ section {
   -moz-transform: scale(1);
   transition: all 200ms ease-in;
   transform: scale(1);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 #scaling:hover {
