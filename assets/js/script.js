@@ -90,7 +90,7 @@ class Producer {
                 this.price = this.basePrice * Math.pow(1.15, this.nbr); // Il faut remplacer 1 par le logarithme neperien
                 // Appel la méthode recalculant la propriété totalProductionPerSec de ce producer
                 // La fonction de recalcul amène appel directement la fonction global getCookiePerSec()
-                this.recalculationProdPerSec() ////////!!!!\\\\\\\  Je ne sais plus s'il faut les () ou pas. n.b  : il les faut
+                this.recalculationProdPerSec()
             } else {
                 console.log("not enough cookie");
             }
@@ -203,7 +203,7 @@ arrProducerModel.forEach((model, index) => {
     let buttonBuy = cloneBtn.querySelector("button.buy")
     buttonBuy.innerText = model[0];
     let buttonMult = cloneBtn.querySelector("button.mult")
-    buttonMult.innerText = `Mult: +50%`;                            // Codé en dur: à modifier
+    buttonMult.innerHTML = `Mult: +50%`;                            // Codé en dur: à modifier
     let target = document.getElementById("target");
     target.appendChild(cloneBtn);                       
     buttonBuy.id = model[0]

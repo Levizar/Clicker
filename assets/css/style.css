@@ -37,7 +37,7 @@ h1 {
 }
 
 #bicookie {
-  margin-right: 10rem;
+  margin-right: 5rem;
 }
 
 .one {
@@ -199,7 +199,7 @@ canvas {
           box-sizing: border-box;
 }
 
-#cookiePerSec {
+.AnotherFontFamily {
   font-family: sans-serif;
 }
 
@@ -465,7 +465,9 @@ canvas {
   z-index: 3;
 }
 
-@-webkit-keyframes rotating /* Safari and Chrome */ {
+@-webkit-keyframes rotating
+
+ /* Safari and Chrome */ {
   from {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
