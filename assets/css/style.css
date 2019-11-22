@@ -534,4 +534,13 @@ button {
   height: 64px;
   margin-top: 5px;
 }
+
+li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
 /*# sourceMappingURL=style.css.map */
