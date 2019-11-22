@@ -57,6 +57,10 @@ h1 {
   font-family: sans-serif;
 }
 
+#cookiesNumber {
+  font-family: sans-serif;
+}
+
 .two {
   -ms-grid-column: 3;
   -ms-grid-column-span: 9;
@@ -457,9 +461,7 @@ canvas {
   z-index: 3;
 }
 
-@-webkit-keyframes rotating
-
- /* Safari and Chrome */ {
+@-webkit-keyframes rotating /* Safari and Chrome */ {
   from {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
