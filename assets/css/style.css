@@ -15,12 +15,14 @@ h1 {
 
 #container {
   min-width: 100vh;
+  position: relative;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (3fr)[2];
       grid-template-columns: repeat(2, 3fr);
   grid-gap: 10px;
   grid-auto-rows: minmax(100px, auto);
+  overflow: hidden;
   background: teal;
 }
 
@@ -417,7 +419,9 @@ canvas {
   z-index: 3;
 }
 
-@-webkit-keyframes rotating /* Safari and Chrome */ {
+@-webkit-keyframes rotating
+
+ /* Safari and Chrome */ {
   from {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
