@@ -199,6 +199,10 @@ canvas {
           box-sizing: border-box;
 }
 
+#cookiePerSec {
+  font-family: sans-serif;
+}
+
 .container {
   z-index: 1;
   position: relative;

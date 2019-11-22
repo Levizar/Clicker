@@ -127,6 +127,10 @@ const getCookiePerSec = () => {
     arrTypeOfProducer.forEach(prod => {
         cookiePerSec += prod.totalProductionPerSec
     })
+    let htmlCookiePerSec = document.querySelector("#cookiePerSec")
+    cookiePerSec =  cookiePerSec/(timeIntervalCookieGeneration/1000)  // Converti en seconde
+    htmlCookiePerSec.innerText = `${cookiePerSec}` 
+    
 }
 
 // Fonction affichant le nombre de cookie
