@@ -180,6 +180,18 @@ const loadSaveGame = () => {
     }
 }
 
+// fonction lançant UN petit biscuit supplémentaire: à faire lorsque "buyProd cursor est lancé"
+const testiiAppend = () => {
+    setTimeout(() => {
+        let testii = document.createElement("img");
+        testii.id = "testii"
+        testii.src = "assets/img/petitBis.png"
+        testii.class = "testi"
+        let scaling = document.getElementById("scaling");
+        scaling.appendChild(testii);
+    }, 300)
+}
+
 
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
@@ -207,9 +219,16 @@ arrProducerModel.forEach((model, index) => {
     let target = document.getElementById("target");
     target.appendChild(cloneBtn);                       
     buttonBuy.id = model[0]
-    buttonBuy.addEventListener("click", () => {
-        arrTypeOfProducer[index].buyProd();
-    })
+    if(model[0] == "click"){
+        buttonBuy.addEventListener("click", () => {
+            arrTypeOfProducer[index].buyProd();
+            testiiAppend();
+        })    
+    }else {
+        buttonBuy.addEventListener("click", () => {
+            arrTypeOfProducer[index].buyProd();
+        })
+    }
     buttonMult.addEventListener("click", () => {
         arrTypeOfProducer[index].buyMult();
     })
@@ -236,20 +255,3 @@ setInterval(() => {
     save();
     console.log("saved");
 }, timeIntervalSaveGame);
-
-
-
-//////////////////////////////////
-////// Fonction en chantier //////
-//////////////////////////////////
-
-
-// fonction lançant UN petit biscuit supplémentaire: à faire lorsque "buyProd cursor est lancé"
-setTimeout(() => {
-    let testii = document.createElement("img");
-    testii.id = "testii"
-    testii.src = "assets/img/petitBis.png"
-    testii.class = "testi"
-    let scaling = document.getElementById("scaling");
-    scaling.appendChild(testii);
-}, 1000)
