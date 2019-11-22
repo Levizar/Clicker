@@ -24,6 +24,20 @@ h1 {
   background: teal;
 }
 
+#count {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-right: 5rem;
+}
+
+#bicookie {
+  margin-right: 10rem;
+}
+
 .one {
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
@@ -101,6 +115,25 @@ section {
 .buy {
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.11), 0 4px 4px rgba(0, 0, 0, 0.11), 0 8px 8px rgba(0, 0, 0, 0.11), 0 16px 16px rgba(0, 0, 0, 0.11), 0 32px 32px rgba(0, 0, 0, 0.11);
           box-shadow: 0 1px 1px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.11), 0 4px 4px rgba(0, 0, 0, 0.11), 0 8px 8px rgba(0, 0, 0, 0.11), 0 16px 16px rgba(0, 0, 0, 0.11), 0 32px 32px rgba(0, 0, 0, 0.11);
+  -webkit-transition: all 200ms ease-in;
+  -webkit-transform: scale(1);
+  -ms-transition: all 200ms ease-in;
+  -ms-transform: scale(1);
+  -moz-transition: all 200ms ease-in;
+  -moz-transform: scale(1);
+  transition: all 200ms ease-in;
+  transform: scale(1);
+}
+
+.buy:hover {
+  -webkit-transition: all 200ms ease-in;
+  -webkit-transform: scale(1.1);
+  -ms-transition: all 200ms ease-in;
+  -ms-transform: scale(1.1);
+  -moz-transition: all 200ms ease-in;
+  -moz-transform: scale(1.1);
+  transition: all 200ms ease-in;
+  transform: scale(1.1);
 }
 
 @-webkit-keyframes rot {
@@ -475,8 +508,6 @@ canvas {
   -moz-transform: scale(1.2);
   transition: all 200ms ease-in;
   transform: scale(1.2);
-<<<<<<< HEAD
-=======
 }
 
 .buy {
@@ -492,6 +523,5 @@ canvas {
 button {
   height: 64px;
   margin-top: 5px;
->>>>>>> master
 }
 /*# sourceMappingURL=style.css.map */
