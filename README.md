@@ -1,6 +1,6 @@
 # Cookie Cliker Clone #
 
-[Cookie Cliker Clone's website](https://levizar.github.io/restaurant-css-framework/)
+[Cookie Cliker Clone's website](https://levizar.github.io/Clicker/)
 
 ## Goal ##
 
