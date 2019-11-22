@@ -475,5 +475,23 @@ canvas {
   -moz-transform: scale(1.2);
   transition: all 200ms ease-in;
   transform: scale(1.2);
+<<<<<<< HEAD
+=======
+}
+
+.buy {
+  width: 250px;
+  margin-left: -30px;
+}
+
+.mult {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+button {
+  height: 64px;
+  margin-top: 5px;
+>>>>>>> master
 }
 /*# sourceMappingURL=style.css.map */
