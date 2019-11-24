@@ -142,39 +142,16 @@ section {
   transform: scale(1.1);
 }
 
-@-webkit-keyframes rot {
-  from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
-}
-
-@keyframes rot {
-  from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
-}
-
 #testii {
   margin-top: 2rem;
   width: 190px;
   height: 170px;
   position: fixed;
+  top: 5%;
   margin: -20px;
   font-size: 100px;
-  -webkit-animation: rot 25s infinite linear;
-          animation: rot 25s infinite linear;
-  -webkit-transform-origin: 50% 50%;
-          transform-origin: 50% 50%;
+  -webkit-animation: rot 20s infinite linear;
+          animation: rot 20s infinite linear;
 }
 
 #petitBiscuit {
@@ -307,6 +284,63 @@ canvas {
           animation-duration: 16s;
   -webkit-animation-delay: 10.25s;
           animation-delay: 10.25s;
+}
+
+.rotating {
+  -webkit-animation: rotating 60s linear infinite;
+  animation: rotating 60s linear infinite;
+}
+
+#scaling {
+  -webkit-transition: all 200ms ease-in;
+  -webkit-transform: scale(1);
+  -ms-transition: all 200ms ease-in;
+  -ms-transform: scale(1);
+  -moz-transition: all 200ms ease-in;
+  -moz-transform: scale(1);
+  transition: all 200ms ease-in;
+  transform: scale(1);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#scaling:hover {
+  -webkit-transition: all 200ms ease-in;
+  -webkit-transform: scale(1.2);
+  -ms-transition: all 200ms ease-in;
+  -ms-transform: scale(1.2);
+  -moz-transition: all 200ms ease-in;
+  -moz-transform: scale(1.2);
+  transition: all 200ms ease-in;
+  transform: scale(1.2);
+}
+
+.buy {
+  width: 250px;
+  margin-left: -30px;
+}
+
+.mult {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+button {
+  height: 64px;
+  margin-top: 5px;
+}
+
+li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
 @-webkit-keyframes fly-cycle {
@@ -489,60 +523,41 @@ canvas {
   }
 }
 
-.rotating {
-  -webkit-animation: rotating 60s linear infinite;
-  animation: rotating 60s linear infinite;
+@-webkit-keyframes rot {
+  0% {
+    -webkit-transform: rotate(0deg) translateY(0px);
+            transform: rotate(0deg) translateY(0px);
+  }
+  5% {
+    -webkit-transform: rotate(0deg) translateY(160px);
+            transform: rotate(0deg) translateY(160px);
+  }
+  95% {
+    -webkit-transform: rotate(360deg) translateY(160px);
+            transform: rotate(360deg) translateY(160px);
+  }
+  100% {
+    -webkit-transform: rotate(360deg) translateY(0px);
+            transform: rotate(360deg) translateY(0px);
+  }
 }
 
-#scaling {
-  -webkit-transition: all 200ms ease-in;
-  -webkit-transform: scale(1);
-  -ms-transition: all 200ms ease-in;
-  -ms-transform: scale(1);
-  -moz-transition: all 200ms ease-in;
-  -moz-transform: scale(1);
-  transition: all 200ms ease-in;
-  transform: scale(1);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-#scaling:hover {
-  -webkit-transition: all 200ms ease-in;
-  -webkit-transform: scale(1.2);
-  -ms-transition: all 200ms ease-in;
-  -ms-transform: scale(1.2);
-  -moz-transition: all 200ms ease-in;
-  -moz-transform: scale(1.2);
-  transition: all 200ms ease-in;
-  transform: scale(1.2);
-}
-
-.buy {
-  width: 250px;
-  margin-left: -30px;
-}
-
-.mult {
-  margin-right: 5px;
-  margin-left: 5px;
-}
-
-button {
-  height: 64px;
-  margin-top: 5px;
-}
-
-li {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+@keyframes rot {
+  0% {
+    -webkit-transform: rotate(0deg) translateY(0px);
+            transform: rotate(0deg) translateY(0px);
+  }
+  5% {
+    -webkit-transform: rotate(0deg) translateY(160px);
+            transform: rotate(0deg) translateY(160px);
+  }
+  95% {
+    -webkit-transform: rotate(360deg) translateY(160px);
+            transform: rotate(360deg) translateY(160px);
+  }
+  100% {
+    -webkit-transform: rotate(360deg) translateY(0px);
+            transform: rotate(360deg) translateY(0px);
+  }
 }
 /*# sourceMappingURL=style.css.map */
