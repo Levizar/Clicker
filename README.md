@@ -23,4 +23,4 @@ It has been done between Tuesday the 19th November and Friday the 22nd October.
 - [Jonathan Petroons](https://github.com/petroons-jonathan)
 
 
-Speacial thanks to our [Woods team-mates](https://github.com/orgs/becodeorg/teams/crl-woods-2-15) from BeCode for helping.
+Special thanks to our [Woods team-mates](https://github.com/orgs/becodeorg/teams/crl-woods-2-15) from BeCode for helping.
